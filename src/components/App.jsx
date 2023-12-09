@@ -94,7 +94,8 @@ export class App extends Component {
   };
 
   render() {
-    const { images, isModalOpen, modalImgUrl, isLoading } = this.state;
+    const { images, isModalOpen, modalImgUrl, isLoading, showLoadMore } =
+      this.state;
     return (
       <StyledWrapper>
         {isModalOpen && (
@@ -102,7 +103,7 @@ export class App extends Component {
         )}
         <SearchBar onSubmit={this.onSubmit} />
         <ImageGallery images={images} openModal={this.openModal} />
-        <Button handleLoadBtn={this.handleLoadBtn} />
+        {showLoadMore && <Button handleLoadBtn={this.handleLoadBtn} />}
         {isLoading && <Loader wrapperStyle={{ margin: '0 auto' }} />}
       </StyledWrapper>
     );
