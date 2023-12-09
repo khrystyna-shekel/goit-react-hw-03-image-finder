@@ -11,7 +11,7 @@ export const SearchBar = ({ onSubmit }) => {
         </button>
 
         <input
-          name="searchQuery"
+          name="search"
           type="text"
           autoComplete="off"
           autoFocus

@@ -2,7 +2,7 @@ import React from 'react';
 import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
 import styled from 'styled-components';
 
-export const ImageGallery = ({ images }) => {
+export const ImageGallery = ({ images, openModal }) => {
   return (
     <StyledGalleryList>
       {images.map(({ id, webformatURL, largeImageURL }) => {
@@ -11,6 +11,7 @@ export const ImageGallery = ({ images }) => {
             key={id}
             webformatURL={webformatURL}
             largeImageURL={largeImageURL}
+            openModal={openModal}
           />
         );
       })}

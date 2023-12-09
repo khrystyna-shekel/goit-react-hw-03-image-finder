@@ -11,17 +11,17 @@ export class Modal extends Component {
   }
 
   handleKeydown = e => {
-    if (e.key === 'Excape') {
+    if (e.key === 'Escape') {
       this.props.closeModal();
     }
   };
 
   render() {
-    const { largeImageURL, closeModal } = this.props;
+    const { modalImgUrl, closeModal } = this.props;
     return (
       <StyledOverlay onClick={closeModal}>
         <div>
-          <img src={largeImageURL} alt="img" />
+          <img src={modalImgUrl} alt="img" />
         </div>
       </StyledOverlay>
     );

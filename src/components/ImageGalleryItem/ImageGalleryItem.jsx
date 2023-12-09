@@ -10,7 +10,7 @@ export const ImageGalleryItem = ({
   return (
     <StyledGalleryItem>
       <img
-        onClick={() => openModal({ largeImageURL })}
+        onClick={() => openModal(largeImageURL)}
         src={webformatURL}
         alt="img"
         id={id}

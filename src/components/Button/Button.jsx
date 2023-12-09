@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const Button = ({ handleLoadBtn }) => {
   return (
-    <StyledBtn onClick={() => handleLoadBtn} type="button">
+    <StyledBtn onClick={handleLoadBtn} type="button">
       Load more
     </StyledBtn>
   );
@@ -11,7 +11,7 @@ export const Button = ({ handleLoadBtn }) => {
 
 const StyledBtn = styled.button`
   padding: 8px 16px;
-  margin: 25px auto;
+  margin: 0 auto;
   border-radius: 2px;
   background-color: #3f51b5;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
