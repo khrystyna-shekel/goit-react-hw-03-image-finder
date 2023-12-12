@@ -34,38 +34,31 @@ export class App extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    this.setState({ page: 1, isLoading: true });
+    this.setState({ page: 1 });
 
     const search = e.currentTarget.elements.search.value;
     this.setState({ search });
   };
 
   async componentDidUpdate(_, prevState) {
-    if (prevState.page < this.state.page) {
+    if (
+      prevState.page !== this.state.page ||
+      prevState.search !== this.state.search
+    ) {
       try {
         this.setState({ isLoading: true });
         const { hits } = await fetchGallaryByQuery(
           this.state.search,
           this.state.page
         );
-        this.setState(prevState => ({
-          images: [...prevState.images, ...hits],
-        }));
-      } catch (error) {
-        console.log(error.message);
-      } finally {
-        this.setState({ isLoading: false });
-      }
-    }
 
-    if (prevState.search < this.state.search) {
-      try {
-        this.setState({ isLoading: true });
-        const { hits } = await fetchGallaryByQuery(
-          this.state.search,
-          this.state.page
-        );
-        this.setState({ images: hits });
+        if (prevState.search !== this.state.search) {
+          this.setState({ images: hits });
+        } else {
+          this.setState(prevState => ({
+            images: [...prevState.images, ...hits],
+          }));
+        }
       } catch (error) {
         console.log(error.message);
       } finally {
@@ -77,8 +70,7 @@ export class App extends Component {
   handleLoadBtn = async () => {
     this.setState(prevState => ({
       page: prevState.page + 1,
-      isLoading: true,
-      showLoadMore: false,
+      showLoadMore: true,
     }));
   };
 
